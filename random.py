@@ -49,3 +49,91 @@ for w in words[:]:
     if len(w) > 6:
         words.insert(0,w)
 print(words)
+
+
+# clear()
+print("*"*50)
+customer_1 = {'name': 'Joe Bloggs', 'age': 24}
+print(f"Customer 1: {customer_1}")
+customer_1.clear()
+print(f"Customer 1: {customer_1}")
+
+# pop()
+print("*"*50)
+customer_1 = {'name': 'Joe Bloggs', 'age': 24}
+print(f"Customer 1: {customer_1}")
+age = customer_1.pop('age')
+print(f"Customer 1: {customer_1}")
+print(age)
+
+# popitem()
+print("*"*50)
+customer_1 = {'name': 'Joe Bloggs', 'age': 24}
+print(f"Customer 1: {customer_1}")
+popped_item = customer_1.popitem()
+print(f"Customer 1: {customer_1}")
+print(popped_item)
+
+# get()
+print("*"*50)
+customer_1 = {'name': 'Joe Bloggs', 'email': 'joe_bloggs@gmail.com'}
+print(f"Customer 1: {customer_1}")
+age = customer_1.get('age',"Customer's age is unknown")
+print(f"Customer 1: {customer_1}")
+print(age)
+
+# setdefault()
+print("*"*50)
+customer_1 = {'name': 'Joe Bloggs', 'email': 'joe_bloggs@gmail.com'}
+print(f"Customer 1: {customer_1}")
+age = customer_1.setdefault('age', 'Unknown')
+print(f"Customer 1: {customer_1}")
+print(age)
+
+# items()
+print("*"*50)
+customer_1 = {'name': 'Joe Bloggs', 'email': 'joe_bloggs@gmail.com'}
+print(f"Customer 1: {customer_1}")
+customer_items = customer_1.items()
+print(customer_items)
+print(type(customer_1))
+print(type(customer_items))
+
+# keys()
+print("*"*50)
+customer_1 = {'name': 'Joe Bloggs', 'email': 'joe_bloggs@gmail.com'}
+print(f"Customer 1: {customer_1}")
+customer_keys = customer_1.keys()
+print(customer_keys)
+print(type(customer_1))
+print(type(customer_keys))
+
+# keys()
+print("*"*50)
+customer_1 = {'name': 'Joe Bloggs', 'email': 'joe_bloggs@gmail.com', 'email2': 'joe.bloggs@gmail.com'}
+print(f"Customer 1: {customer_1}")
+customer_values = customer_1.values()
+print(customer_values)
+print(type(customer_1))
+print(type(customer_values))
+
+# Loops
+print("*"*50)
+for key, value in customer_1.items():
+    print(f"Key:Value {key}:{value}")
+
+for key in customer_1:
+    print(f"Key {key}")
+    print(f"customer_1[Key]: {customer_1[key]}")
+
+for key in customer_1.keys():
+    print(f"Key {key}")
+
+for key in sorted(customer_1.keys()):
+    print(f"Key {key}")
+
+for value in customer_1.values():
+    print(f"Value {value}")
+
+for value in set(customer_1.values()):
+    print(f"Value {value}")
