@@ -42,7 +42,7 @@ my_tuple = (20,)
 print(type(my_tuple))
 
 # If modifying the sequence you are iterating over while inside the loop
-# first make a copy
+# first make a copy; otherwise the below would be an infinite loop.
 print("*"*50)
 words = ['cat','window','defenestrate']
 for w in words[:]:
@@ -50,6 +50,11 @@ for w in words[:]:
         words.insert(0,w)
 print(words)
 
+words = ['cat','window','defenestrate']
+for x in range(len(words)):
+    if len(words[x]) > 6:
+        words.insert(0,words[x])
+print(words)
 
 # clear()
 print("*"*50)
@@ -110,7 +115,7 @@ print(type(customer_keys))
 
 # keys()
 print("*"*50)
-customer_1 = {'name': 'Joe Bloggs', 'email': 'joe_bloggs@gmail.com', 'email2': 'joe.bloggs@gmail.com'}
+customer_1 = {'name': 'Joe Bloggs', 'email': 'joe.bloggs@gmail.com', 'email2': 'joe.bloggs@gmail.com'}
 print(f"Customer 1: {customer_1}")
 customer_values = customer_1.values()
 print(customer_values)
@@ -132,8 +137,13 @@ for key in customer_1.keys():
 for key in sorted(customer_1.keys()):
     print(f"Key {key}")
 
+print("*"*50)
+print(customer_1)
 for value in customer_1.values():
     print(f"Value {value}")
 
 for value in set(customer_1.values()):
     print(f"Value {value}")
+
+print("This is a message.", end = " ")
+print("This is a second message.")
