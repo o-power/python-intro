@@ -1,5 +1,13 @@
 # https://stackoverflow.com/questions/1265665/how-can-i-check-if-a-string-represents-an-int-without-using-try-except
 def can_convert_to_int(x):
+    """Returns True if argument can be converted to an int.
+
+    Parameters:
+    x: value to be tested
+
+    Returns
+    bool: True if x can be converted to an int
+    """
     try:
         int(x)
         return True
