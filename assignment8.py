@@ -62,7 +62,7 @@ def add_correct_guess(player_guess, round_progress, word_to_guess):
     for all instances of player_guess in word_to_guess.
 
     Parameters:
-    player_guess (): a letter which is in word_to_guess.
+    player_guess (str): a letter which is in word_to_guess.
     round_progress (list): a list of letters and underscores.
     word_to_guess (list): a list of letters representing the word to guess.
     """
