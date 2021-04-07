@@ -1,10 +1,4 @@
 
-# c) Create a loop that will prompt the user to input a word until the user types ‘stop’
-
-# e) If the player types ‘stop’ the loop should end
-# f) The function returns a nested list of words
-
-
 def get_words():
     """Returns a list of user inputted words.
 
@@ -56,12 +50,35 @@ def get_guess():
             is_guessing = False
             return_value = None
         elif len(guess) > 1:
-            print('Your guess must be a single letter. Try again!')
+            print('Your guess must be a single letter. Try again!\n')
         else:
+            is_guessing = False
             return_value = guess
         
     return return_value
 
+def add_correct_guess(player_guess, round_progress, word_to_guess):
+    """Replaces the underscores in round_progress with the player_guess
+    for all instances of player_guess in word_to_guess.
+
+    Parameters:
+    player_guess (): a letter which is in word_to_guess.
+    round_progress (list): a list of letters and underscores.
+    word_to_guess (list): a list of letters representing the word to guess.
+    """
+    letter_count = 0
+
+    for letter in word_to_guess:
+        if letter == player_guess:
+            round_progress[letter_count] = player_guess
+        letter_count += 1
+
+def round_won(word_to_guess):
+    """Displays a congratulations message and the word.
+    """
+    print("Congrats! You have guessed all the letters!")
+    display_word(word_to_guess)
+    
 def main():
     """Runs the game.
     """
@@ -69,7 +86,7 @@ def main():
     print(message)
 
     words = get_words()
-    print(words)
+    #print(words)
 
     is_playing_game = True
     game_round = 0
@@ -81,19 +98,34 @@ def main():
         round_progress = ['_ ' for letter in word_to_guess]
 
         message = f"\nThe word to guess has {len(word_to_guess)} letters."
-        message += "\nType 'quit' at any time to end the round."
+        message += "\nType 'quit' at any time to end the game.\n"
         print(message)
 
         while is_playing_round:
             display_word(round_progress)
             guess = get_guess()
-            print(guess)
-            break
-
-        game_round += 1
-
+            if guess is None:
+                is_playing_game = False
+                break
+            elif guess in guessed_letters:
+                print("You have already guessed this letter. Guess again!\n")
+            elif guess not in word_to_guess:
+                print(f"Unlucky! The letter {guess} is not in the word.\n")
+                guessed_letters.append(guess)
+            else:
+                print(f"Correct! The letter {guess} is in the word.\n")
+                add_correct_guess(guess, round_progress, word_to_guess)
+                guessed_letters.append(guess)
+                if '_ ' not in round_progress:
+                    round_won(word_to_guess)
+                    is_playing_round = False
+                    game_round += 1
+                    word_to_guess.clear()
+                    round_progress.clear()
+                    guessed_letters.clear()
+                
     print("\nThanks for playing!")
-    print(get_words.__doc__)
+    #print(get_words.__doc__)
 
 if __name__ == "__main__":
     # Code in here will only execute when the file is run directly    
