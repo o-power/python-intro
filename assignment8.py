@@ -74,14 +74,12 @@ def add_correct_guess(player_guess, round_progress, word_to_guess):
         letter_count += 1
 
 def round_won(word_to_guess):
-    """Displays a congratulations message and the word.
-    """
+    """Displays a congratulations message and the word."""
     print("Congrats! You have guessed all the letters!")
     display_word(word_to_guess)
     
 def main():
-    """Runs the game.
-    """
+    """Runs the game."""
     message = "\nWelcome to the 'Hangman' game."
     print(message)
 
