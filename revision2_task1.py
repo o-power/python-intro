@@ -62,7 +62,7 @@ def main():
     while has_not_quit:
         menu_option = input("\nEnter the menu option number: ").strip()
 
-        if menu_option == "quit":
+        if menu_option.lower() == "quit":
             has_not_quit = False
         elif can_convert_to_int(menu_option):
             menu_option = int(menu_option)
@@ -73,9 +73,9 @@ def main():
             elif menu_option == 3:
                 add_new_box(box_sizes)
             else:
-                print("\nYou must enter valid menu option number!")
+                print("\nYou must enter a valid menu option number!")
         else:
-            print("\nYou must enter valid menu option number!")
+            print("\nYou must enter a valid menu option number!")
 
     print("\nThanks for using the Boxes'R'Us Customer Order System")
 
