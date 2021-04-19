@@ -8,41 +8,57 @@ def can_convert_to_int(x):
 
 def choose_base(available_bases):
     """Returns the choosen base."""
-    base = input("Choose a base: ").strip()
     base_is_available = False
 
-    while base_is_available:
+    while not base_is_available:
+        base = input("\nChoose a base: ").strip()
         if base.lower() in available_bases:
-            print("You have choosen {base} as your base.")
+            base_is_available = True
+            print(f"You have choosen {base.title()} as your base.")
         else:
-            print("{base} is not available.")
-            print("The available bases are: {available_bases}")
+            print(f"{base.title()} is not available.")
+            print(f"The available bases are: {[available_base.title() for available_base in available_bases]}")
     
     return base
 
 def choose_sauce(available_sauces):
-    # sauce = 'Tomato'
-    # sauce_is_available = True
-    # if sauce in available_sauces:
-    #     print(f"Your chosen sauce, {sauce}, is available.")
-    # else:
-    #     print(f"Your chosen sauce, {sauce}, is not available.")
-    #     sauce_is_available = False
-    pass
+    """Returns the choosen sauce."""
+    sauce_is_available = False
+
+    while not sauce_is_available:
+        sauce = input("\nChoose a sauce: ").strip()
+        if sauce.lower() in available_sauces:
+            sauce_is_available = True
+            print(f"You have choosen {sauce.title()} as your sauce.")
+        else:
+            print(f"{sauce.title()} is not available.")
+            print(f"The available sauces are: {[available_sauce.title() for available_sauce in available_sauces]}")
+    
+    return sauce
 
 def choose_toppings(available_toppings):
-    # toppings = ['Pepperoni', 'Onion', 'Mushroom', 'Pineapple', 'Sweetcorn', 'Mozzarella']
-    # topping_is_available = True
-    # for topping in toppings:
-#     if topping in available_veg_toppings or topping in available_meat_toppings:
-#         print(f"Your chosen topping, {topping}, is available.")
-#     else:
-#         print(f"Your chosen topping, {topping}, is not available.")
-#         topping_is_available = False
+    """Returns the choosen toppings."""
+    user_has_quit = False
+    toppings = []
+
+    while not user_has_quit:
+        topping_is_available = False
+
+        while not topping_is_available:
+            topping = input("\nChoose a topping. Type 'done' when finished: ").strip()
+            if topping.lower() == 'done':
+                user_has_quit = True
+                break
+            elif topping.lower() in available_toppings['veg'] or topping.lower() in available_toppings['meat']:
+                topping_is_available = True
+                toppings.append(topping)
+                print(f"You have choosen {topping.title()} as your topping.")
+            else:
+                print(f"{topping.title()} is not available.")
+                print(f"The available vegetarian toppings are: {[available_topping.title() for available_topping in available_toppings['veg']]}")
+                print(f"The available meat toppings are: {[available_topping.title() for available_topping in available_toppings['meat']]}")
     
-#     if topping == 'Pineapple':
-#         print(f"Pineapple is a controversial topping!")
-    pass
+    return toppings
 
 def main():
     """Runs the pizza ordering program."""
@@ -60,10 +76,14 @@ def main():
     
     pizza = {}
 
-    pizza['base'] = choose_base(available_bases, has_not_quit)
+    pizza['base'] = choose_base(available_bases)
     pizza['sauce'] = choose_sauce(available_sauces)
     pizza['toppings'] = choose_toppings(available_toppings)
-    print(pizza)
+    
+    print("\nYou have order a pizza with:")
+    print(f"Base: {pizza['base'].title()}")
+    print(f"Sauce: {pizza['sauce'].title()}")
+    print(f"Toppings: {[topping.title() for topping in pizza['toppings']]}")
 
     print("\nThanks for using the Pizza Pisa Order System")
 
