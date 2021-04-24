@@ -223,3 +223,115 @@ print(f"Your deadline (datetime): {deadline}")
 deadline = deadline.date()
 print(f"Your deadline (date): {deadline}")
 print(f"You have {(deadline - current_date).days} days until your deadline.")
+
+# import io
+# file_stream = open('pi.txt','r')
+# file_contents = file_stream.read()
+# print(file_contents)
+# file_stream.close()
+
+# file_stream = open('pi.txt','r')
+# first_line = file_stream.readline()
+# print(first_line)
+# second_line = file_stream.readline()
+# print(second_line)
+# file_stream.close()
+
+# file_stream = open('text.txt','w')
+# text = input('Enter some text to add to file: ')
+# file_stream.write(text)
+# file_stream.close()
+
+# help("os.path")
+
+# if os.path.isfile('text.txt'):
+#     file_stream = open('text.txt','a')
+# else:
+#     file_stream = open('text.txt','w')
+# text = input('Enter some text to add to file: ')
+# file_stream.write(text)
+# file_stream.close()
+
+# with open('text.txt','r') as file_stream:
+#     file_contents = file_stream.read()
+# print(file_contents)
+
+# with open('text.txt','r') as file_stream:
+#     file_contents = file_stream.readlines()
+
+# for line in file_contents:
+#     print(line.rstrip())
+
+# Syntax Errors
+# Logic Errors
+# Runtime Errors
+
+x = float(input('Enter a dividend: '))
+y = float(input('Enter a divisor: '))
+
+try:
+    print(f'The quotient is: {x/y}')
+except ZeroDivisionError:
+    print("You can't divide by zero")
+
+while True:
+    while True:
+        try:
+            x = float(input('Enter a dividend: '))
+            y = float(input('Enter a divisor: '))
+            break
+        except ValueError:
+            print("Please enter a number. Try again!")
+    
+    try:
+        print(f'The quotient is: {x/y}')
+        break
+    except ZeroDivisionError:
+        print("You can't divide by zero")
+
+try:
+    x = float(input('Enter a dividend: '))
+    y = float(input('Enter a divisor: '))
+    
+    print(f'The quotient is: {x/y}')
+except ValueError:
+    print("Please enter a number. Try again!")
+except ZeroDivisionError:
+    print("You can't divide by zero")
+except:
+    print('Something went wrong')
+else:
+    print('You successfully divided a number')
+finally:
+    print('Thanks')
+
+# try:
+#     x = float(input('Enter a dividend: '))
+#     y = float(input('Enter a divisor: '))
+    
+#     print(f'The quotient is: {x/y}')
+# except ValueError:
+#     print("Please enter a number. Try again!")
+# except:
+#     if y == 0:
+#         raise
+#     print('Something went wrong')
+# else:
+#     print('You successfully divided a number')
+# finally:
+#     print('Thanks')
+
+import sys
+
+try:
+    x = float(input('Enter a dividend: '))
+    y = float(input('Enter a divisor: '))
+    
+    print(f'The quotient is: {x/y}')
+except:
+    print(sys.exc_info()[0])
+    print('Something went wrong')
+else:
+    print('You successfully divided a number')
+finally:
+    print('Thanks')
