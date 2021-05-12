@@ -1,5 +1,6 @@
 
 # help("keywords")
+# python -m pydoc input
 
 # y is x returns True is y and x point to the same memory location e.g.
 print("*"*50)
