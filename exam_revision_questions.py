@@ -87,22 +87,86 @@
 # print("sunday".capitalize())
 
 # Question 18
-numList = [1,2,3,4,5]
-alphaList = ['a','b','c','d','e']
+# numList = [1,2,3,4,5]
+# alphaList = ['a','b','c','d','e']
 
-print(numList is alphaList) # False
-print(numList == alphaList) # False
+# print(numList is alphaList) # False
+# print(numList == alphaList) # False
 
-numList = alphaList
+# numList = alphaList
 
-print(numList is alphaList) # True
-print(numList == alphaList) # True
+# print(numList is alphaList) # True
+# print(numList == alphaList) # True
 
 # Question 19
-a = 11
-b = 4
-print(a/b) # 2.75
-print(a//b) # 2
-print(a%b) # 3
+# a = 11
+# b = 4
+# print(a/b) # 2.75
+# print(a//b) # 2
+# print(a%b) # 3
 
 # Question 20
+# x = eval(input("Enter a number for the equation: "))
+# y = (-x)**4
+
+# Question 21
+# print(2*(3+3)**2 - (4**2)*2)
+
+# Question 22
+# import random
+# import string
+
+# def get_random_string(length):
+#     """Returns a random lowercase string of the given length."""
+#     letters = string.ascii_lowercase
+#     result_str = ''.join(random.choice(letters) for i in range(length))
+#     #print("Random string of length", length, "is:", result_str)
+#     return result_str
+
+# serial_numbers = [get_random_string(5) for i in range(50)]
+# print(serial_numbers[:])
+# print(serial_numbers[:-5])
+
+# Question 26
+# randint(start,stop) is an alias for randrange(start, stop+1).
+
+# Question 27
+# import os
+# def get_first_line(filename, mode):
+#     if os.path.isfile(filename):
+#         with open(filename, 'r') as file:
+#             return file.readline()
+#     else:
+#         return None
+
+# print(get_first_line('words.txt','r'))
+
+# Question 28
+# numbers = open('numbers.txt','r')
+# eof_flag = False
+# while not eof_flag:
+#     line = numbers.readline()
+#     #print(f"Line: {line}")
+#     if line != '':
+#         if line != "\n":
+#             print(line, sep='')
+#     else:
+#         print("End of file")
+#         eof_flag = True
+#         numbers.close()
+
+# Question 35
+# import sys
+# try:
+#     readf = open('read.txt','r')
+#     writef = open('write.txt','w')
+# except IOError:
+#     print('cannot open the file', f_name)
+# else:
+#     count = 1
+#     for line in readf:
+#         print(line.rstrip())
+#         writef.write('line' + str(count) + ': ' + line)
+#         count += 1
+#     readf.close()
+#     writef.close()
