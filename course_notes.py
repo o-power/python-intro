@@ -1,50 +1,78 @@
+# ====== Lesson 1 ======
+print("*"*20, "Lesson 1", "*"*20)
 
-# help("keywords")
-# python -m pydoc input
+# The pydoc module automatically generates documentation about Python.
+# To start the Python REPL:
+# $ python
+# >>> help("input")
+# Type q to quit.
+# $ python -m pydoc input
+# >>> help()
+# Type quit to exit help.
+# Type quit() to exit the Python REPL.
+
+# when we assign a new value to a variable, we change the memory location that the variable references
+age = 40
+print(f'id: {id(age)}')
+print(f'type: {type(age)}')
+print(f'value: {age}\n')
+
+age = 44
+print(f'id: {id(age)}')
+print(f'type: {type(age)}')
+print(f'value: {age}\n')
 
 # y is x returns True is y and x point to the same memory location e.g.
-print("*"*50)
 x = "test"
 y = x
 print(f"id(x) is: {id(x)}")
 print(f"id(y) is: {id(y)}")
-print(f"y is x returns: {y is x}")
-print(f"x is y returns: {x is y}")
+print(f"y is x returns: {y is x}") # True
+print(f"x is y returns: {x is y}\n") # True
 
 a = "banana"
 b = "bananas"
 print(f"id(a) is: {id(a)}")
 print(f"id(b) is: {id(b)}")
-print(f"b is a returns: {b is a}")
-print(f"a is b returns: {a is b}")
+print(f"b is a returns: {b is a}") # False
+print(f"a is b returns: {a is b}\n") # False
 
 c = "banana"
 d = "banana"
 print(f"id(c) is: {id(c)}")
 print(f"id(d) is: {id(d)}")
-print(f"d is c returns: {d is c}")
-print(f"c is d returns: {c is d}")
+print(f"d is c returns: {d is c}") # True (as string is short)
+print(f"c is d returns: {c is d}\n") # True
+
+# ====== Lesson 2 ======
+print("*"*20, "Lesson 2", "*"*20)
+
+message = "brown"
+print("The",message,"fox.")
+print("The "+message+" fox.")
+print(f"The {message} fox.")
+print("The {} fox.\n".format(message))
+
+print(f"{8/4}") # 2.0
+print(f"{8/3}") # 2.666
+print(f"{8//3}\n") # 2
 
 # big numbers - to help programmer type it in, underscores not displayed
-print("*"*50)
 big_number = 75_000_000_000
 print(big_number)
 
 # multiple assignments on one line
-print("*"*50)
 x, y = 6, 7
 
-# tuples with one item need a comma
-print("*"*50)
-my_tuple = (20)
-print(type(my_tuple))
+# ====== Lesson 3 ======
+print("*"*20, "Lesson 3", "*"*20)
 
-my_tuple = (20,)
-print(type(my_tuple))
+# del list_name[item index]
+# removed_item = list_name.pop(item index)
+# remove('item value')
 
 # If modifying the sequence you are iterating over while inside the loop
 # first make a copy; otherwise the below would be an infinite loop.
-print("*"*50)
 words = ['cat','window','defenestrate']
 for w in words[:]:
     if len(w) > 6:
@@ -56,6 +84,19 @@ for x in range(len(words)):
     if len(words[x]) > 6:
         words.insert(0,words[x])
 print(words)
+
+# ====== Lesson 4 ======
+print("*"*20, "Lesson 4", "*"*20)
+
+# tuples with one item need a comma
+print("*"*50)
+my_tuple = (20)
+print(type(my_tuple))
+
+my_tuple = (20,)
+print(type(my_tuple))
+
+
 
 # clear()
 print("*"*50)
