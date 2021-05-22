@@ -35,3 +35,7 @@ Python 3.7.4
 (env) $ which python
 .env/Scripts/python
 ```
+To shut down the virtual environment:
+```
+(env) $ deactivate
+```
