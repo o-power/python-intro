@@ -13,12 +13,12 @@ print("*"*20, "Lesson 1", "*"*20)
 
 # when we assign a new value to a variable, we change the memory location that the variable references
 age = 40
-print(f'id: {id(age)}')
+print(f'id: {id(age)}') # memory address
 print(f'type: {type(age)}')
 print(f'value: {age}\n')
 
 age = 44
-print(f'id: {id(age)}')
+print(f'id: {id(age)}') # age now points to a new memory location
 print(f'type: {type(age)}')
 print(f'value: {age}\n')
 
@@ -69,7 +69,7 @@ print("*"*20, "Lesson 3", "*"*20)
 
 # del list_name[item index]
 # removed_item = list_name.pop(item index)
-# remove('item value')
+# list_name.remove('item value')
 
 # If modifying the sequence you are iterating over while inside the loop
 # first make a copy; otherwise the below would be an infinite loop.
@@ -89,103 +89,128 @@ print(words)
 print("*"*20, "Lesson 4", "*"*20)
 
 # tuples with one item need a comma
-print("*"*50)
 my_tuple = (20)
 print(type(my_tuple))
 
 my_tuple = (20,)
 print(type(my_tuple))
 
+# ====== Lesson 5 ======
+print("*"*20, "Lesson 5", "*"*20)
 
+# ====== Lesson 6 ======
+print("*"*20, "Lesson 6", "*"*20)
+
+# new_list = [expression for item in iterable if condition == True]
+
+# ====== Lesson 7 ======
+print("*"*20, "Lesson 7", "*"*20)
+
+# A key can only occur once in a dictionary.
+customer_1 = {}
+customer_1['name'] = 'Joe Bloggs'
+customer_1['age'] = 24
+print(f"Customer 1: {customer_1}")
+del customer_1['age']
+print(f"Customer 1 (after del): {customer_1}\n")
 
 # clear()
-print("*"*50)
 customer_1 = {'name': 'Joe Bloggs', 'age': 24}
 print(f"Customer 1: {customer_1}")
 customer_1.clear()
-print(f"Customer 1: {customer_1}")
+print(f"Customer 1 (after .clear()): {customer_1}\n")
 
 # pop()
-print("*"*50)
 customer_1 = {'name': 'Joe Bloggs', 'age': 24}
 print(f"Customer 1: {customer_1}")
 age = customer_1.pop('age')
-print(f"Customer 1: {customer_1}")
-print(age)
+print(f"Customer 1 (after .pop()): {customer_1}")
+print(f"Age: {age}\n")
 
 # popitem()
-print("*"*50)
 customer_1 = {'name': 'Joe Bloggs', 'age': 24}
 print(f"Customer 1: {customer_1}")
 popped_item = customer_1.popitem()
-print(f"Customer 1: {customer_1}")
-print(popped_item)
+print(f"Customer 1 (after .popitem()): {customer_1}")
+print(f"Popped item: {popped_item}\n")
 
 # get()
-print("*"*50)
+# Useful to avoid the KeyError error message
 customer_1 = {'name': 'Joe Bloggs', 'email': 'joe_bloggs@gmail.com'}
 print(f"Customer 1: {customer_1}")
-age = customer_1.get('age',"Customer's age is unknown")
-print(f"Customer 1: {customer_1}")
-print(age)
+try:
+    age = customer_1['age']
+except KeyError:
+    print("We got a KeyError.")
+age = customer_1.get('age',"Unknown")
+print(f"Customer 1 (after .get()): {customer_1}")
+print(f"Age: {age}\n")
 
 # setdefault()
-print("*"*50)
 customer_1 = {'name': 'Joe Bloggs', 'email': 'joe_bloggs@gmail.com'}
 print(f"Customer 1: {customer_1}")
 age = customer_1.setdefault('age', 'Unknown')
-print(f"Customer 1: {customer_1}")
-print(age)
+print(f"Customer 1 (after .setdefault()): {customer_1}")
+print(f"Age: {age}\n")
 
 # items()
-print("*"*50)
 customer_1 = {'name': 'Joe Bloggs', 'email': 'joe_bloggs@gmail.com'}
 print(f"Customer 1: {customer_1}")
 customer_items = customer_1.items()
+print("items():")
 print(customer_items)
 print(type(customer_1))
-print(type(customer_items))
+print(type(customer_items)) # a view object which changes when the dictionary changes
+print()
 
 # keys()
-print("*"*50)
 customer_1 = {'name': 'Joe Bloggs', 'email': 'joe_bloggs@gmail.com'}
 print(f"Customer 1: {customer_1}")
 customer_keys = customer_1.keys()
+print("keys():")
 print(customer_keys)
 print(type(customer_1))
 print(type(customer_keys))
+print()
 
-# keys()
-print("*"*50)
+# values()
 customer_1 = {'name': 'Joe Bloggs', 'email': 'joe.bloggs@gmail.com', 'email2': 'joe.bloggs@gmail.com'}
 print(f"Customer 1: {customer_1}")
 customer_values = customer_1.values()
+print("values():")
 print(customer_values)
 print(type(customer_1))
 print(type(customer_values))
+print()
 
 # Loops
-print("*"*50)
+print(customer_1)
 for key, value in customer_1.items():
     print(f"Key:Value {key}:{value}")
 
+print()
 for key in customer_1:
     print(f"Key {key}")
     print(f"customer_1[Key]: {customer_1[key]}")
 
+print()
 for key in customer_1.keys():
     print(f"Key {key}")
 
+print()
 for key in sorted(customer_1.keys()):
     print(f"Key {key}")
 
-print("*"*50)
-print(customer_1)
+print()
 for value in customer_1.values():
     print(f"Value {value}")
 
+print()
 for value in set(customer_1.values()):
     print(f"Value {value}")
+
+# ====== Lesson 8 ======
+print("*"*20, "Lesson 8", "*"*20)
 
 print("This is a message.", end = " ")
 print("This is a second message.")
