@@ -1,4 +1,4 @@
-# Introduction to Programming with Python
+# Introduction to Programming using Python
 
 ## Getting Started with VS Code and Python
 
