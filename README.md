@@ -36,6 +36,6 @@ Python 3.7.4
 .env/Scripts/python
 ```
 To shut down the virtual environment:
-```
+```console
 (env) $ deactivate
 ```
