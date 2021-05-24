@@ -52,6 +52,8 @@ print("The",message,"fox.")
 print("The "+message+" fox.")
 print(f"The {message} fox.")
 print("The {} fox.\n".format(message))
+print("This is a message.", end = " ")
+print("This is a second message.\n")
 
 print(f"{8/4}") # 2.0
 print(f"{8/3}") # 2.666
@@ -207,13 +209,33 @@ for value in customer_1.values():
 
 print()
 for value in set(customer_1.values()):
-    print(f"Value {value}")
+    print(f"Value {value}\n")
 
 # ====== Lesson 8 ======
 print("*"*20, "Lesson 8", "*"*20)
 
-print("This is a message.", end = " ")
-print("This is a second message.")
+pets = ['cat','dog','fish','dog','rabbit']
+print(pets)
+while 'dog' in pets:
+    pets.remove('dog')
+print(pets)
+
+print()
+for num in range(4):
+    print(num)
+print()
+
+my_list = []
+for num in range(1,11):
+    my_list.append(num)
+print(my_list)
+
+# ====== Lesson 9 ======
+print("*"*20, "Lesson 9", "*"*20)
+
+print(f'19 % 12 = {19%12}')
+print(f'-19 % 12 = {19%12}')
+# https://rob.conery.io/2018/08/21/mod-and-remainder-are-not-the-same/#:~:text=When%20you%20%E2%80%9Cmod%E2%80%9D%20something%2C,%3A%205%20%25%202%20%3D%201%20
 
 def print_toppings(*toppings):
     """Demo of arbitrary argument lists.
@@ -228,14 +250,20 @@ print_toppings("cheese", "mushrooms", "mozzarella")
 def concat(*args, sep="/"):
     return sep.join(args)
 
-def cheeseshop(kind, *arguments, **keywords):
+print(concat('C','Documents','Folder'))
+
+def cheeseshop(kind, *args, **kwargs):
+    """Demo of arbitrary arguments and arbitrary keyword arguments.
+    
+    Keyword arguments are put into a dictionary.
+    """
     print("-- Do you have any", kind, "?")
     print("-- I'm sorry, we're all out of", kind)
-    for arg in arguments:
+    for arg in args:
         print(arg)
     print("-" * 40)
-    for kw in keywords:
-        print(kw, ":", keywords[kw])
+    for kw in kwargs:
+        print(kw, ":", kwargs[kw])
 
 cheeseshop("Limburger", "It's very runny, sir.",
            "It's really very, VERY runny, sir.",
@@ -243,11 +271,30 @@ cheeseshop("Limburger", "It's very runny, sir.",
            client="John Cleese",
            sketch="Cheese Shop Sketch")
 
+# When we use keyword arguments:
+# 1. We can often leave out arguments that have default values
+# 2. We can rearrange arguments in a way that makes them most readable
+# 3. We call arguments by their names to make it more clear what they represent
+def pet_details(animal, name='undecided'):
+    """Display a pet's details."""
+    print(f'I have a pet {animal}.')
+    print(f'My animal\'s name is {name}')
+
+pet_details('cat')
+
+# Equivalent function calls
+pet_details('cat','Garfield')
+pet_details(animal='cat', name='Garfield')
+pet_details(name='Garfield', animal='cat')
+
 # returns "__main__" if script ran as python random.py
 # returns "random" if script is imported into another script
 # This is often used either to provide a convenient user interface to a module,
 #  or for testing purposes (running the module as a script executes a test suite).
 print(__name__)
+
+# ====== Lesson 10 ======
+print("*"*20, "Lesson 10", "*"*20)
 
 import copy
 
