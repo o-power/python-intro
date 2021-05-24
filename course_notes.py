@@ -66,8 +66,28 @@ print(big_number)
 # multiple assignments on one line
 x, y = 6, 7
 
+# None
+print("\nChecking for None")
+x = None
+
+if x:
+    print("Do you think None is True?")
+elif x is False:
+    print ("Do you think None is False?")
+else:
+    print("None is not True, or False, None is just None...")
+
+if x is None:
+    print("Check for None using is None\n")
+
 # ====== Lesson 3 ======
 print("*"*20, "Lesson 3", "*"*20)
+
+list_1 = [1,2]
+list_2 = [3,4]
+list_3 = list_1 + list_2
+list_4 = list_3*3
+print(list_4) # [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
 
 # del list_name[item index]
 # removed_item = list_name.pop(item index)
@@ -246,6 +266,7 @@ def print_toppings(*toppings):
     print(toppings)
 
 print_toppings("cheese", "mushrooms", "mozzarella")
+print_toppings() # prints an empty tuple
 
 def concat(*args, sep="/"):
     return sep.join(args)
@@ -275,6 +296,14 @@ cheeseshop("Limburger", "It's very runny, sir.",
 # 1. We can often leave out arguments that have default values
 # 2. We can rearrange arguments in a way that makes them most readable
 # 3. We call arguments by their names to make it more clear what they represent
+
+# def pet_details(animal, name):
+#     """Display a pet's details."""
+#     print(f'I have a pet {animal}.')
+#     print(f'My animal\'s name is {name}')
+
+# pet_details('cat') # TypeError: pet_details() missing 1 required positional argument: 'name'
+
 def pet_details(animal, name='undecided'):
     """Display a pet's details."""
     print(f'I have a pet {animal}.')
