@@ -544,5 +544,16 @@ finally:
 # ====== Lesson 12 ======
 print("*"*20, "Lesson 12", "*"*20)
 
+import csv
+with open('capitals.csv', mode='r') as fbs:
+    capitals = csv.reader(fbs)
+    is_first = True
+    for row in capitals:
+        if is_first:
+            print(f"{'    '.join(row).title()}")
+            is_first = False
+        else:
+            print(f"{row[0].title()}    {row[1].title()}    {row[2].title()}")
+
 # ====== Lesson 13 ======
 print("*"*20, "Lesson 13", "*"*20)
