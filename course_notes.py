@@ -250,6 +250,9 @@ for num in range(1,11):
     my_list.append(num)
 print(my_list)
 
+my_list = [num for num in range(1,11)]
+print(my_list)
+
 # ====== Lesson 9 ======
 print("*"*20, "Lesson 9", "*"*20)
 
@@ -316,8 +319,8 @@ pet_details('cat','Garfield')
 pet_details(animal='cat', name='Garfield')
 pet_details(name='Garfield', animal='cat')
 
-# returns "__main__" if script ran as python random.py
-# returns "random" if script is imported into another script
+# returns "__main__" if script ran as python course_notes.py
+# returns "course_notes" if script is imported into another script
 # This is often used either to provide a convenient user interface to a module,
 #  or for testing purposes (running the module as a script executes a test suite).
 print(__name__)
@@ -325,23 +328,37 @@ print(__name__)
 # ====== Lesson 10 ======
 print("*"*20, "Lesson 10", "*"*20)
 
-import copy
+# import math
+# print(math.ceil(5.3))
 
+# from math import ceil
+# print(ceil(5.3))
+
+# import random as r
+# print(r.randrange(5, 9))
+
+# from random import randrange as rr
+# print(rr(5, 9))
+
+print("\nShallow versus Deep Copy")
+import copy
 person_1 = {'name': 'Walter Wall', "age": 35, "email": "walter_wall@gmail.com", "profession": "floorer"}
 person_2 = {'name': 'Polly Pocket', 'age': 6, 'email': 'polly_pocket@hotmail.com', 'profession': 'Children\'s Entertainer'}
 customers = {1234: person_1, 2345: person_2}
-customers_deep_copy = copy.deepcopy(customers)
 customers_shallow_copy = customers.copy()
+customers_deep_copy = copy.deepcopy(customers)
 person_1.clear()
 print(f"Customers Person 1: \n {customers[1234]}")
-print(f"Customers Copy Person 1: \n {customers_shallow_copy[1234]}")
-print(f"Customers Copy Person 1: \n {customers_deep_copy[1234]}")
+print(f"Customers Shallow Copy Person 1: \n {customers_shallow_copy[1234]}")
+print(f"Customers Deep Copy Person 1: \n {customers_deep_copy[1234]}")
 
+print("\nstrftime()")
 # https://docs.python.org/3/library/datetime.html#module-datetime
 # https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes
 import datetime as dt
+
 # method strftime of datetime class in module dt
-#formatted_dt = dt.datetime.strftime(datetime_object, "format codes")
+# formatted_dt = dt.datetime.strftime(datetime_object, "format codes")
 
 current_time = dt.datetime.now()
 print(f"Unformatted date and time: {current_time}")
@@ -349,17 +366,19 @@ formatted_time = dt.datetime.strftime(current_time, "%d/%m/%Y %H:%M:%S")
 print(f"Formatted date and time: {formatted_time}")
 
 # method strftime of date class in module dt
-#formatted_dt = dt.datetime.strftime(datetime_object, "format codes")
+# formatted_dt = dt.date.strftime(datetime_object, "format codes")
 
 current_date = dt.date.today()
 print(f"Unformatted date: {current_date}")
 formatted_date = dt.date.strftime(current_date, "%a, %d %b %y")
 print(f"Formatted date: {formatted_date}")
 
+print("\nstrptime()")
 # new_datetime_object = dt.datetime.strptime("string to parse", "format codes")
 
 current_date = dt.date.today()
-input_date = input("Enter the date of your deadline in the format dd/mm/yyyy format: ")
+#input_date = input("Enter the date of your deadline in the format dd/mm/yyyy format: ")
+input_date = '21/06/2021'
 deadline = dt.datetime.strptime(input_date, "%d/%m/%Y")
 print(f"Your deadline (datetime): {deadline}")
 # convert datetime to date
@@ -367,56 +386,96 @@ deadline = deadline.date()
 print(f"Your deadline (date): {deadline}")
 print(f"You have {(deadline - current_date).days} days until your deadline.")
 
-# import io
-# file_stream = open('pi.txt','r')
-# file_contents = file_stream.read()
-# print(file_contents)
-# file_stream.close()
+print("\nmath")
+from math import pi, ceil, floor
+print(f"Value of pi to 15 d.p. is {pi}")
+print(f"pi rounded up to the nearest integer is {ceil(pi)}")
+print(f"pi rounded down to the nearest integer is {floor(pi)}")
 
-# file_stream = open('pi.txt','r')
-# first_line = file_stream.readline()
-# print(first_line)
-# second_line = file_stream.readline()
-# print(second_line)
-# file_stream.close()
+print("\nrandom")
+import random
+# generate random numbers from 5 (inclusive) to 10 (exclusive) in steps of 2 e.g. 5, 7, 9
+for i in range(5):
+    print(random.randrange(5, 10, 2), end=" ")
+print()
+import random
+# generate random numbers from 5 (inclusive) to 8 (inclusive) e.g. 5, 6, 7, 8
+for i in range(5):
+    print(random.randint(5, 8), end=" ")
 
-# file_stream = open('text.txt','w')
-# text = input('Enter some text to add to file: ')
-# file_stream.write(text)
-# file_stream.close()
+my_list = [random.randrange(101) for i in range(10)]
+print(f"\nOriginal list:\t{my_list}")
+random.shuffle(my_list)
+print(f"Shuffled list:\t{my_list}")
 
-# help("os.path")
+# ====== Lesson 11 ======
+print("*"*20, "Lesson 11", "*"*20)
 
-# if os.path.isfile('text.txt'):
-#     file_stream = open('text.txt','a')
-# else:
-#     file_stream = open('text.txt','w')
-# text = input('Enter some text to add to file: ')
-# file_stream.write(text)
-# file_stream.close()
+import io
+file_stream = open('numbers.txt','r')
+file_contents = file_stream.read()
+print("\nStart of file")
+print(file_contents)
+print("End of file\n")
+file_stream.close()
 
-# with open('text.txt','r') as file_stream:
-#     file_contents = file_stream.read()
-# print(file_contents)
+file_stream = open('numbers.txt','r')
+first_line = file_stream.readline()
+print(first_line)
+second_line = file_stream.readline()
+print(second_line)
+file_stream.close()
 
-# with open('text.txt','r') as file_stream:
-#     file_contents = file_stream.readlines()
+import string
+def get_random_string(length):
+    """Returns a random lowercase string of the given length."""
+    letters = string.ascii_lowercase
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    #print("Random string of length", length, "is:", result_str)
+    return result_str
+file_stream = open('random_text.txt','w')
+#text = input('Enter some text to add to file: ')
+text = get_random_string(10)
+file_stream.write(text)
+file_stream.close()
 
-# for line in file_contents:
-#     print(line.rstrip())
+import os
+if os.path.isfile('random_text.txt'):
+    file_stream = open('random_text.txt','a')
+else:
+    file_stream = open('random_text.txt','w')
+text = get_random_string(10)
+file_stream.write(text)
+file_stream.close()
 
-# Syntax Errors
-# Logic Errors
-# Runtime Errors
+with open('numbers.txt','r') as file_stream:
+    file_contents = file_stream.read()
+print("\nStart of file")
+print(file_contents)
+print("End of file\n")
 
-x = float(input('Enter a dividend: '))
-y = float(input('Enter a divisor: '))
+with open('numbers.txt','r') as file_stream:
+    file_contents = file_stream.readlines()
+print("\nStart of file")
+for line in file_contents:
+    # use rstrip() as print will add a newline character
+    #print(line.rstrip())
+    print(line, end='')
+print("\nEnd of file\n")
 
-try:
-    print(f'The quotient is: {x/y}')
-except ZeroDivisionError:
-    print("You can't divide by zero")
+print("Exception Handling\n")
+# 1. Syntax Errors
+# 2. Logic Errors
+# 3. Runtime Errors
 
+# x = float(input('Enter a dividend: '))
+# y = float(input('Enter a divisor: '))
+# try:
+#     print(f'The quotient is: {x/y}')
+# except ZeroDivisionError:
+#     print("You can't divide by zero")
+
+print("Demo of while loops with try except")
 while True:
     while True:
         try:
@@ -425,56 +484,65 @@ while True:
             break
         except ValueError:
             print("Please enter a number. Try again!")
-    
     try:
         print(f'The quotient is: {x/y}')
         break
     except ZeroDivisionError:
         print("You can't divide by zero")
 
+print("\nDemo of multiple except blocks, an else block and a finally block")
 try:
     x = float(input('Enter a dividend: '))
     y = float(input('Enter a divisor: '))
-    
     print(f'The quotient is: {x/y}')
+# you can stack except blocks
 except ValueError:
     print("Please enter a number. Try again!")
 except ZeroDivisionError:
     print("You can't divide by zero")
 except:
     print('Something went wrong')
+# else block runs only when try is successful
 else:
     print('You successfully divided a number')
+# finally block will always run
 finally:
     print('Thanks')
 
-# try:
-#     x = float(input('Enter a dividend: '))
-#     y = float(input('Enter a divisor: '))
-    
-#     print(f'The quotient is: {x/y}')
-# except ValueError:
-#     print("Please enter a number. Try again!")
-# except:
-#     if y == 0:
-#         raise
-#     print('Something went wrong')
-# else:
-#     print('You successfully divided a number')
-# finally:
-#     print('Thanks')
-
-import sys
-
+print("\nDemo of raise")
 try:
     x = float(input('Enter a dividend: '))
     y = float(input('Enter a divisor: '))
-    
     print(f'The quotient is: {x/y}')
+except ValueError:
+    print("Please enter a number. Try again!")
 except:
-    print(sys.exc_info()[0])
+    if y == 0:
+        raise
     print('Something went wrong')
 else:
     print('You successfully divided a number')
 finally:
     print('Thanks')
+
+print("\nDemo of sys.exc_info()")
+import sys
+try:
+    x = float(input('Enter a dividend: '))
+    y = float(input('Enter a divisor: '))
+    print(f'The quotient is: {x/y}')
+except:
+    print(sys.exc_info()[0]) # type
+    print(sys.exc_info()[1]) # value
+    print(sys.exc_info()[2]) # traceback
+    print('Something went wrong')
+else:
+    print('You successfully divided a number')
+finally:
+    print('Thanks')
+
+# ====== Lesson 12 ======
+print("*"*20, "Lesson 12", "*"*20)
+
+# ====== Lesson 13 ======
+print("*"*20, "Lesson 13", "*"*20)

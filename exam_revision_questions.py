@@ -147,10 +147,10 @@
 # while not eof_flag:
 #     line = numbers.readline()
 #     #print(f"Line: {line}")
-#     if line != '':
-#         if line != "\n":
+#     if line != '': # if line contains something
+#         if line != "\n": # if that something is not just new line character
 #             print(line, sep='')
-#     else:
+#     else: # line doesn't contain anything
 #         print("End of file")
 #         eof_flag = True
 #         numbers.close()
