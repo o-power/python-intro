@@ -544,6 +544,7 @@ finally:
 # ====== Lesson 12 ======
 print("*"*20, "Lesson 12", "*"*20)
 
+print("Reading a CSV")
 import csv
 with open('capitals.csv', mode='r') as fbs:
     capitals = csv.reader(fbs)
