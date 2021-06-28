@@ -544,8 +544,26 @@ finally:
 # ====== Lesson 12 ======
 print("*"*20, "Lesson 12", "*"*20)
 
-print("Reading a CSV")
 import csv
+
+print('\nWriting to a CSV')
+with open('customers.csv', mode='w', newline='') as fbs:
+    customers_file = csv.writer(fbs, delimiter=',', quoting=csv.QUOTE_MINIMAL, quotechar='"')
+    
+    customers_file.writerow(['firstname', 'lastname', 'age', 'email'])
+    customers_file.writerow(['john', 'smith', 35, 'js@outlook.com'])
+    customers_file.writerow(['mary', 'ryan', 43, 'mr@hotmail.com'])
+
+with open('agents.csv', mode='w', newline='') as fbs:
+    field_names = ['firstname', 'lastname', 'age', 'email']
+    agents_file = csv.DictWriter(fbs, fieldnames=field_names)
+
+    agents_file.writeheader()
+    agents_file.writerow({'age': 35, 'firstname':'john', 'lastname':'smith', 'email':'js@outlook.com'})
+    agents_file.writerow({'firstname':'mary', 'lastname':'ryan', 'age': 43, 'email':'mr@outlook.com'})
+
+print('\nReading a CSV')
+print('csv.reader()')
 with open('capitals.csv', mode='r') as fbs:
     capitals = csv.reader(fbs)
     is_first = True
@@ -555,6 +573,65 @@ with open('capitals.csv', mode='r') as fbs:
             is_first = False
         else:
             print(f"{row[0].title()}    {row[1].title()}    {row[2].title()}")
+
+# to avoid indexing errors
+print('\ncsv.DictReader()')
+with open('capitals.csv', mode='r') as fbs:
+    capitals = csv.DictReader(fbs)
+    is_first = True
+    for row in capitals:
+        if is_first:
+            print(f"{'    '.join(row).title()}")
+            is_first = False
+        else:
+            print(f"{row['Country'].title()}    {row['Capital'].title()}    {row['Population'].title()}")
+
+# serialization: convert a Python object into a string in the JSON format
+# deserialization: convert a string in the JSON format into a Python object
+
+print('\nSerialization')
+customers = {
+    123456: {'name': 'Walter Wall', "age": 35, "email": "walter_wall@gmail.com", "profession": "floorer"},
+    234567: {'name': 'Polly Pocket', 'age': 6, 'email': 'polly_pocket@hotmail.com', 'profession': 'Children\'s Entertainer'},
+    345678: {'name': 'Freda Convict', 'age': 44, 'email': 'freda_convict@yahoo.com', 'profession': 'Prison Warden'}
+}
+
+import json
+
+with open('customers.json', 'w') as fbs:
+    json.dump(customers, fbs, indent=4)
+
+json_str = json.dumps(customers, indent=4)
+print(json_str)
+
+# serialization: data type conversion chart
+# Python | JSON
+# dict | object
+# list, tuple | array
+# str | string
+# int, float | number
+# True | true
+# False | false
+# None | null
+
+# deserialization: data type conversion chart
+# JSON | Python
+# object | dict
+# array | list
+# string | str
+# number (int) | int
+# number (not int) | float
+# true | True
+# false | False
+# null | None
+
+print('\nDeserialization')
+with open('customers.json', 'r') as fbs:
+    loaded_data = json.load(fbs)
+
+print(loaded_data)
+
+print(json.loads(json_str))
 
 # ====== Lesson 13 ======
 print("*"*20, "Lesson 13", "*"*20)

@@ -1,0 +1,20 @@
+{
+    "123456": {
+        "name": "Walter Wall",
+        "age": 35,
+        "email": "walter_wall@gmail.com",
+        "profession": "floorer"
+    },
+    "234567": {
+        "name": "Polly Pocket",
+        "age": 6,
+        "email": "polly_pocket@hotmail.com",
+        "profession": "Children's Entertainer"
+    },
+    "345678": {
+        "name": "Freda Convict",
+        "age": 44,
+        "email": "freda_convict@yahoo.com",
+        "profession": "Prison Warden"
+    }
+}
