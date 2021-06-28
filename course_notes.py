@@ -635,3 +635,12 @@ print(json.loads(json_str))
 
 # ====== Lesson 13 ======
 print("*"*20, "Lesson 13", "*"*20)
+
+# unit test: a test which verifies that one specific aspect of the code is correct
+# test case: a collection of unit tests which test a feature of the code against a full range of situations
+# full coverage: the goal of a test case is to achieve full coverage, i.e. the feature is fully tested
+
+def get_name_string(first, last):
+    """Returns the name as a formatted string."""
+    formatted_name = f'{first} {last}'.title()
+    return formatted_name
